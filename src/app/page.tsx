@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Stats from '@/components/Stats';
 import Features from '@/components/Features';
 import NamesShowcase from '@/components/NamesShowcase';
 import Gamification from '@/components/Gamification';
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Stats />
         <Features />
         <NamesShowcase />
         <Gamification />

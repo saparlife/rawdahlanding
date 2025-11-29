@@ -67,6 +67,12 @@
     "streak": "Daily Streaks",
     "achievements": "Achievements"
   },
+  "stats": {
+    "users": "Active Users",
+    "names": "Names to Learn",
+    "completed": "Lessons Completed",
+    "rating": "App Store Rating"
+  },
   "cta": {
     "title": "Start Your Learning Journey Today",
     "subtitle": "Join thousands of users who are learning the beautiful names of Allah",
