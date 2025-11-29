@@ -45,7 +45,7 @@ export default function FeedbackModal() {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center gap-2"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center gap-2 cursor-pointer"
       >
         <MessageSquarePlus className="w-6 h-6" />
         <span className="hidden sm:inline font-medium">{t('button')}</span>

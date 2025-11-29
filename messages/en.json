@@ -13,7 +13,14 @@
     "title": "Learn the 99 Names of Allah",
     "subtitle": "A beautiful journey to memorize Asmaul Husna with audio pronunciation, interactive quizzes, and gamified progress tracking",
     "openApp": "Open Web App",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "mockup": {
+      "subtitle": "99 Names of Allah",
+      "progress": "Progress",
+      "xpEarned": "XP Earned",
+      "streak": "7 days",
+      "level": "Level 5"
+    }
   },
   "features": {
     "title": "Everything you need to learn",

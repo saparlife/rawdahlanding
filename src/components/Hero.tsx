@@ -103,10 +103,10 @@ export default function Hero() {
                       className="rounded-2xl mb-4"
                     />
                     <div className="text-3xl font-bold mb-2">Rawdah</div>
-                    <div className="text-lg opacity-90 text-center">99 Names of Allah</div>
+                    <div className="text-lg opacity-90 text-center">{t('mockup.subtitle')}</div>
                     <div className="mt-6 w-full space-y-3">
                       <div className="bg-white/20 rounded-xl p-3 backdrop-blur">
-                        <div className="text-sm opacity-80">Progress</div>
+                        <div className="text-sm opacity-80">{t('mockup.progress')}</div>
                         <div className="flex items-center gap-2">
                           <div className="flex-1 bg-white/30 rounded-full h-2">
                             <div className="bg-white rounded-full h-2 w-2/3" />
@@ -115,7 +115,7 @@ export default function Hero() {
                         </div>
                       </div>
                       <div className="bg-white/20 rounded-xl p-3 backdrop-blur flex items-center justify-between">
-                        <span className="text-sm opacity-80">XP Earned</span>
+                        <span className="text-sm opacity-80">{t('mockup.xpEarned')}</span>
                         <span className="font-bold">1,250</span>
                       </div>
                     </div>
@@ -126,11 +126,11 @@ export default function Hero() {
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-2xl p-3 shadow-lg animate-bounce">
                 <span className="text-2xl">🔥</span>
-                <span className="text-sm font-bold text-gray-900 dark:text-white ml-1">7 days</span>
+                <span className="text-sm font-bold text-gray-900 dark:text-white ml-1">{t('mockup.streak')}</span>
               </div>
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 rounded-2xl p-3 shadow-lg">
                 <span className="text-2xl">⭐</span>
-                <span className="text-sm font-bold text-gray-900 dark:text-white ml-1">Level 5</span>
+                <span className="text-sm font-bold text-gray-900 dark:text-white ml-1">{t('mockup.level')}</span>
               </div>
             </div>
           </div>
