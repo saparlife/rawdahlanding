@@ -21,7 +21,7 @@ export default function CTA() {
           {t('subtitle')}
         </p>
         <a
-          href="https://rawdah.app"
+          href="https://rawdah-app.web.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-xl"

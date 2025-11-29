@@ -53,18 +53,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Download */}
           <div>
-            <h3 className="font-semibold text-white mb-4">{t('contact')}</h3>
+            <h3 className="font-semibold text-white mb-4">Download</h3>
             <div className="space-y-3">
               <a
-                href="https://rawdah.app"
+                href="https://rawdah-app.web.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full font-medium transition-colors text-sm"
+                className="block text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                Open App
+                Web App
               </a>
+              <a
+                href="https://apps.apple.com/ru/app/rawdah-99-%D0%B8%D0%BC%D0%B5%D0%BD-%D0%B0%D0%BB%D0%BB%D0%B0%D1%85%D0%B0/id1626704913"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-gray-400 hover:text-emerald-400 transition-colors"
+              >
+                App Store
+              </a>
+              <span className="block text-gray-500">
+                Google Play (Скоро)
+              </span>
             </div>
           </div>
         </div>
