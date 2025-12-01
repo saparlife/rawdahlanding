@@ -3,6 +3,35 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-border-hover: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --surface: #050505;
+  --hero-gradient-from: rgba(6, 78, 59, 0.5);
+  --hero-gradient-to: rgba(17, 94, 89, 0.5);
+  --badge-bg: rgba(16, 185, 129, 0.1);
+  --badge-border: rgba(16, 185, 129, 0.2);
+  --icon-color: #ffffff;
+}
+
+:root.light {
+  --background: #ffffff;
+  --foreground: #121826;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-border-hover: #10b981;
+  --text-primary: #121826;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --surface: #f8fafc;
+  --hero-gradient-from: #ecfdf5;
+  --hero-gradient-to: #f0fdfa;
+  --badge-bg: rgba(16, 185, 129, 0.15);
+  --badge-border: rgba(16, 185, 129, 0.3);
+  --icon-color: #0f172a;
 }
 
 @theme inline {
@@ -14,6 +43,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Smooth scrolling */
@@ -27,16 +57,37 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--text-muted);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--text-secondary);
+}
+
+/* Light theme specific styles */
+:root.light .hero-section {
+  background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--background), var(--hero-gradient-to));
+}
+
+:root.light .stat-icon-wrapper {
+  background: var(--background);
+}
+
+:root.light .stat-icon-wrapper .stat-icon {
+  color: var(--icon-color);
+}
+
+:root.light .group:hover .stat-icon-wrapper {
+  background: transparent !important;
+}
+
+:root.light .group:hover .stat-icon {
+  color: #ffffff !important;
 }
 
 /* Gradient text animation */

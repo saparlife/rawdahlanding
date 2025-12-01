@@ -45,10 +45,10 @@ export default function FeedbackModal() {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center gap-2 cursor-pointer"
+        className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-5 py-3 rounded-2xl shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all hover:scale-105 flex items-center gap-2 cursor-pointer group"
       >
-        <MessageSquarePlus className="w-6 h-6" />
-        <span className="hidden sm:inline font-medium">{t('button')}</span>
+        <MessageSquarePlus className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+        <span className="font-medium">{t('button')}</span>
       </button>
 
       {/* Modal backdrop */}
@@ -59,21 +59,21 @@ export default function FeedbackModal() {
         >
           {/* Modal content */}
           <div
-            className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-md p-6 shadow-2xl"
+            className="bg-[var(--background)] border border-[var(--card-border)] rounded-2xl w-full max-w-md p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                <h2 className="text-xl font-bold text-[var(--text-primary)]">
                   {t('title')}
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                <p className="text-[var(--text-secondary)] text-sm">
                   {t('subtitle')}
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer hover:bg-[var(--surface)] rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -86,7 +86,7 @@ export default function FeedbackModal() {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={t('messagePlaceholder')}
                   rows={4}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 bg-[var(--surface)] border border-[var(--card-border)] rounded-xl text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
                   required
                 />
               </div>
@@ -97,7 +97,7 @@ export default function FeedbackModal() {
                   value={contact}
                   onChange={(e) => setContact(e.target.value)}
                   placeholder={t('contactPlaceholder')}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-[var(--surface)] border border-[var(--card-border)] rounded-xl text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 />
               </div>
 
@@ -116,7 +116,7 @@ export default function FeedbackModal() {
               <button
                 type="submit"
                 disabled={status === 'sending' || !message.trim()}
-                className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-300 dark:disabled:bg-emerald-800 text-white px-6 py-3 rounded-xl font-medium transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:from-emerald-300 disabled:to-teal-300 dark:disabled:from-emerald-800 dark:disabled:to-teal-800 text-white px-6 py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed shadow-md hover:shadow-lg"
               >
                 {status === 'sending' ? (
                   <>

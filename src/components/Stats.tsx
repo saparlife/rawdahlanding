@@ -45,7 +45,7 @@ export default function Stats() {
   ];
 
   return (
-    <section className="py-20 bg-[#0a0a0a] relative overflow-hidden">
+    <section className="py-20 bg-[var(--background)] relative overflow-hidden transition-colors">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
@@ -63,19 +63,19 @@ export default function Stats() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center group"
             >
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${color} p-[1px]`}>
-                <div className="w-full h-full bg-[#0a0a0a] rounded-2xl flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
-                  <Icon className="w-7 h-7 text-white" />
+              <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${color} p-[1px] shadow-lg`}>
+                <div className="stat-icon-wrapper w-full h-full bg-[var(--background)] rounded-2xl flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
+                  <Icon className="stat-icon w-7 h-7 text-[var(--icon-color)] group-hover:text-white transition-colors duration-300" />
                 </div>
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-2">
                 {isDecimal ? (
                   <span>{value}</span>
                 ) : (
                   <AnimatedNumber value={value} suffix={suffix} />
                 )}
               </div>
-              <div className="text-gray-400">{label}</div>
+              <div className="text-[var(--text-secondary)]">{label}</div>
             </motion.div>
           ))}
         </div>

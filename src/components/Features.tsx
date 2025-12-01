@@ -17,7 +17,7 @@ export default function Features() {
   const t = useTranslations('features');
 
   return (
-    <section id="features" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="features" className="py-24 bg-[var(--background)] relative overflow-hidden transition-colors">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px]" />
@@ -37,12 +37,12 @@ export default function Features() {
             viewport={{ once: true }}
             className="inline-block text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4"
           >
-            Features
+            {t('label')}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
             {t('title')}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -56,7 +56,7 @@ export default function Features() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className={`group relative bg-gradient-to-br from-white/5 to-white/[0.02] rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all ${shadowColor} hover:shadow-lg backdrop-blur-sm`}
+              className={`group relative bg-[var(--card-bg)] rounded-3xl p-8 border border-[var(--card-border)] hover:border-[var(--card-border-hover)] transition-all ${shadowColor} hover:shadow-lg backdrop-blur-sm`}
             >
               {/* Gradient border on hover */}
               <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -65,10 +65,10 @@ export default function Features() {
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg ${shadowColor}`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-emerald-500 transition-colors">
                   {t(`${key}.title`)}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-[var(--text-secondary)] leading-relaxed">
                   {t(`${key}.description`)}
                 </p>
               </div>

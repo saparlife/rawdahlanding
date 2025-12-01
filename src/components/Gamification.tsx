@@ -9,23 +9,23 @@ export default function Gamification() {
 
   const stats = [
     { icon: Zap, label: t('xp'), value: '2,450', color: 'from-yellow-400 to-orange-500', bg: 'bg-yellow-500/10' },
-    { icon: Flame, label: t('streak'), value: '14', suffix: ' days', color: 'from-orange-500 to-red-500', bg: 'bg-orange-500/10' },
+    { icon: Flame, label: t('streak'), value: '14', suffix: ` ${t('streakDays')}`, color: 'from-orange-500 to-red-500', bg: 'bg-orange-500/10' },
     { icon: Trophy, label: t('achievements'), value: '8/15', color: 'from-purple-500 to-pink-500', bg: 'bg-purple-500/10' },
   ];
 
   const achievements = [
-    { emoji: '🌟', name: 'First Steps', unlocked: true },
-    { emoji: '📚', name: 'Scholar', unlocked: true },
-    { emoji: '🎯', name: 'Perfect Score', unlocked: true },
-    { emoji: '💪', name: 'Dedicated', unlocked: true },
-    { emoji: '🏆', name: 'Champion', unlocked: true },
-    { emoji: '✨', name: 'Consistent', unlocked: false },
-    { emoji: '🔥', name: 'On Fire', unlocked: false },
-    { emoji: '💎', name: 'Master', unlocked: false },
+    { emoji: '🌟', name: t('achievement1'), unlocked: true },
+    { emoji: '📚', name: t('achievement2'), unlocked: true },
+    { emoji: '🎯', name: t('achievement3'), unlocked: true },
+    { emoji: '💪', name: t('achievement4'), unlocked: true },
+    { emoji: '🏆', name: t('achievement5'), unlocked: true },
+    { emoji: '✨', name: t('achievement6'), unlocked: false },
+    { emoji: '🔥', name: t('achievement7'), unlocked: false },
+    { emoji: '💎', name: t('achievement8'), unlocked: false },
   ];
 
   return (
-    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section className="py-24 bg-[var(--background)] relative overflow-hidden transition-colors">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px]" />
@@ -39,12 +39,12 @@ export default function Gamification() {
           className="text-center mb-16"
         >
           <span className="inline-block text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4">
-            Gamification
+            {t('label')}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
             {t('title')}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -62,15 +62,15 @@ export default function Gamification() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 rounded-3xl blur-xl transition-opacity" style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }} />
-              <div className={`relative ${bg} border border-white/10 group-hover:border-white/20 rounded-3xl p-8 text-center backdrop-blur-sm transition-all`}>
+              <div className={`relative ${bg} border border-[var(--card-border)] group-hover:border-[var(--card-border-hover)] rounded-3xl p-8 text-center backdrop-blur-sm transition-all`}>
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
                   <Icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-[var(--text-primary)] mb-2">
                   {value}
-                  {suffix && <span className="text-lg text-gray-400">{suffix}</span>}
+                  {suffix && <span className="text-lg text-[var(--text-secondary)]">{suffix}</span>}
                 </div>
-                <div className="text-gray-400">{label}</div>
+                <div className="text-[var(--text-secondary)]">{label}</div>
               </div>
             </motion.div>
           ))}
@@ -83,7 +83,7 @@ export default function Gamification() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h3 className="text-xl font-semibold text-white mb-8">Unlock Achievements</h3>
+          <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-8">{t('unlockAchievements')}</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {achievements.map(({ emoji, name, unlocked }, i) => (
               <motion.div
@@ -97,14 +97,14 @@ export default function Gamification() {
               >
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-lg transition-all ${
                   unlocked
-                    ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/20 hover:border-emerald-500/50'
-                    : 'bg-white/5 border border-white/10 grayscale opacity-50'
+                    ? 'bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-emerald-500/50'
+                    : 'bg-[var(--card-bg)] border border-[var(--card-border)] grayscale opacity-50'
                 }`}>
                   {emoji}
                 </div>
                 {/* Tooltip */}
                 <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  <span className="text-xs text-gray-400">{name}</span>
+                  <span className="text-xs text-[var(--text-secondary)]">{name}</span>
                 </div>
                 {/* Glow effect for unlocked */}
                 {unlocked && (

@@ -14,7 +14,7 @@ export default function NamesShowcase() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-[#0a0a0a] via-emerald-950/20 to-[#0a0a0a] relative overflow-hidden">
+    <section id="about" className="py-24 bg-[var(--surface)] relative overflow-hidden transition-colors">
       {/* Decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px]" />
@@ -28,12 +28,12 @@ export default function NamesShowcase() {
           className="text-center mb-16"
         >
           <span className="inline-block text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4">
-            Learn
+            {t('label')}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
             {t('title')}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -52,7 +52,7 @@ export default function NamesShowcase() {
               {/* Card glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
 
-              <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-8 border border-white/10 group-hover:border-emerald-500/30 transition-all backdrop-blur-sm">
+              <div className="relative bg-[var(--card-bg)] rounded-3xl p-8 border border-[var(--card-border)] group-hover:border-emerald-500/30 transition-all backdrop-blur-sm">
                 {/* Number badge */}
                 <div className="flex items-center justify-between mb-6">
                   <span className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-emerald-500/30">
@@ -70,7 +70,7 @@ export default function NamesShowcase() {
                 {/* Arabic name */}
                 <div className="text-center mb-6">
                   <motion.span
-                    className="text-5xl font-bold text-white block mb-4"
+                    className="text-5xl font-bold text-[var(--text-primary)] block mb-4"
                     style={{ fontFamily: 'serif' }}
                     animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 3, repeat: Infinity }}
@@ -84,7 +84,7 @@ export default function NamesShowcase() {
                   <h3 className="text-xl font-bold text-emerald-400">
                     {name.name}
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-[var(--text-secondary)]">
                     {name.meaning}
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default function NamesShowcase() {
           className="mt-20"
         >
           <div className="text-center mb-8">
-            <p className="text-gray-400">11 Topics × 9 Names = 99 Names</p>
+            <p className="text-[var(--text-secondary)]">{t('topicsFormula')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {Array.from({ length: 11 }, (_, i) => (
@@ -112,15 +112,15 @@ export default function NamesShowcase() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white/5 border border-white/10 hover:border-emerald-500/30 rounded-xl px-4 py-3 backdrop-blur-sm transition-all"
+                className="bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-emerald-500/30 rounded-xl px-4 py-3 backdrop-blur-sm transition-all"
               >
-                <span className="text-xs text-gray-500 block mb-2">Topic {i + 1}</span>
+                <span className="text-xs text-gray-500 block mb-2">{t('topic')} {i + 1}</span>
                 <div className="flex gap-1">
                   {Array.from({ length: 9 }, (_, j) => (
                     <motion.div
                       key={j}
                       className={`w-2 h-2 rounded-full ${
-                        j <= i ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : 'bg-white/20'
+                        j <= i ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : 'bg-gray-400/40'
                       }`}
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}

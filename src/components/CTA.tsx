@@ -47,7 +47,7 @@ export default function CTA() {
             className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
           >
             <Sparkles className="w-4 h-4" />
-            Start for free
+            {t('badge')}
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6">
@@ -81,13 +81,13 @@ export default function CTA() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/>
               </svg>
-              No credit card required
+              {t('noCreditCard')}
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/>
               </svg>
-              Free forever
+              {t('freeForever')}
             </div>
           </motion.div>
         </motion.div>

@@ -1,15 +1,17 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import { Globe, Menu, X } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
+import { useRouter, usePathname } from '@/i18n/routing';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const t = useTranslations('nav');
+  const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -22,14 +24,8 @@ export default function Header() {
   }, []);
 
   const toggleLocale = () => {
-    const currentLocale = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('locale='))
-      ?.split('=')[1] || 'ru';
-
-    const newLocale = currentLocale === 'ru' ? 'en' : 'ru';
-    document.cookie = `locale=${newLocale}; path=/; max-age=31536000`;
-    router.refresh();
+    const newLocale = locale === 'ru' ? 'en' : 'ru';
+    router.replace(pathname, { locale: newLocale });
   };
 
   return (
@@ -38,8 +34,8 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/10'
-          : 'bg-transparent'
+          ? 'bg-[var(--background)]/90 backdrop-blur-xl border-b border-[var(--card-border)] shadow-sm'
+          : 'bg-[var(--background)]/50 backdrop-blur-sm'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,15 +51,15 @@ export default function Header() {
               height={40}
               className="rounded-xl"
             />
-            <span className="font-bold text-xl text-white">Rawdah</span>
+            <span className="font-bold text-xl text-[var(--text-primary)]">Rawdah</span>
           </motion.div>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#features" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               {t('features')}
             </a>
-            <a href="#about" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               {t('about')}
             </a>
           </div>
@@ -73,10 +69,10 @@ export default function Header() {
               onClick={toggleLocale}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 text-gray-400 hover:text-white transition-colors"
+              className="p-2 text-2xl cursor-pointer transition-transform"
               aria-label="Toggle language"
             >
-              <Globe className="w-5 h-5" />
+              {locale === 'ru' ? '🇬🇧' : '🇷🇺'}
             </motion.button>
             <motion.a
               href="https://rawdah-app.web.app/"
@@ -92,7 +88,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-400 hover:text-white"
+              className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -107,20 +103,20 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/10"
+            className="md:hidden bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--card-border)]"
           >
             <div className="px-4 py-4 space-y-4">
               <a
                 href="#features"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-gray-400 hover:text-white transition-colors py-2"
+                className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2"
               >
                 {t('features')}
               </a>
               <a
                 href="#about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-gray-400 hover:text-white transition-colors py-2"
+                className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2"
               >
                 {t('about')}
               </a>

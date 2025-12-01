@@ -1,0 +1,14 @@
+{
+  "name": "rawdah-screenshot-generator",
+  "version": "1.0.0",
+  "description": "Generate App Store screenshots for Rawdah app",
+  "main": "generate.js",
+  "scripts": {
+    "generate": "node generate.js",
+    "generate:ru": "node generate.js --lang=ru",
+    "generate:en": "node generate.js --lang=en"
+  },
+  "dependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}
