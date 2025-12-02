@@ -19,8 +19,7 @@ const translations = {
       title: 'Изучайте',
       titleHighlight: '99 имён',
       titleEnd: 'Аллаха',
-      subtitle: 'Красивое приложение с аудио произношением, тестами и геймификацией',
-      rating: '4.9 в App Store'
+      subtitle: 'Красивое приложение с аудио произношением, тестами и геймификацией'
     },
     screen2: {
       label: 'ИЗУЧЕНИЕ',
@@ -73,8 +72,7 @@ const translations = {
       title: 'Learn the',
       titleHighlight: '99 Names',
       titleEnd: 'of Allah',
-      subtitle: 'Beautiful app with audio pronunciation, quizzes, and gamification',
-      rating: '4.9 on App Store'
+      subtitle: 'Beautiful app with audio pronunciation, quizzes, and gamification'
     },
     screen2: {
       label: 'LEARNING',
@@ -187,19 +185,8 @@ function generateScreen1HTML(t, size) {
       line-height: 1.5;
       max-width: ${1000 * scale}px;
     }
-    .rating {
-      margin-top: ${110 * scale}px;
-      display: flex;
-      align-items: center;
-      gap: ${28 * scale}px;
-      background: rgba(255,255,255,0.1);
-      padding: ${36 * scale}px ${72 * scale}px;
-      border-radius: ${180 * scale}px;
-      font-size: ${50 * scale}px;
-    }
-    .stars { color: #fbbf24; }
     .flags {
-      margin-top: ${72 * scale}px;
+      margin-top: ${110 * scale}px;
       display: flex;
       align-items: center;
       gap: ${36 * scale}px;
@@ -214,10 +201,6 @@ function generateScreen1HTML(t, size) {
     ${t.title} <span class="highlight">${t.titleHighlight}</span> ${t.titleEnd}
   </h1>
   <p class="subtitle">${t.subtitle}</p>
-  <div class="rating">
-    <span class="stars">★★★★★</span>
-    <span>${t.rating}</span>
-  </div>
   <div class="flags">🇰🇿 🇷🇺 🇬🇧 🇹🇷</div>
 </body>
 </html>`;
