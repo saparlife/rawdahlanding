@@ -28,6 +28,18 @@ export default function Header() {
     router.replace(pathname, { locale: newLocale });
   };
 
+  const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    // Small delay to allow menu to close, then scroll
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -58,6 +70,9 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               {t('features')}
+            </a>
+            <a href="#gamification" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+              {t('gamification')}
             </a>
             <a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               {t('about')}
@@ -98,14 +113,21 @@ export default function Header() {
             <div className="px-4 py-4 space-y-4">
               <a
                 href="#features"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleMobileNavClick(e, '#features')}
                 className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2"
               >
                 {t('features')}
               </a>
               <a
+                href="#gamification"
+                onClick={(e) => handleMobileNavClick(e, '#gamification')}
+                className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2"
+              >
+                {t('gamification')}
+              </a>
+              <a
                 href="#about"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleMobileNavClick(e, '#about')}
                 className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors py-2"
               >
                 {t('about')}
