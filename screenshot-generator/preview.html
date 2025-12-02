@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rawdah Screenshots Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: white;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #10b981;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .lang-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .lang-tab {
+      padding: 12px 30px;
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      color: #888;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .lang-tab.active {
+      background: #10b981;
+      border-color: #10b981;
+      color: white;
+    }
+
+    .lang-tab:hover:not(.active) {
+      border-color: #10b981;
+      color: #10b981;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 20px;
+      color: #888;
+      margin: 50px 0 30px;
+    }
+
+    .screenshots-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .screenshot-wrapper {
+      text-align: center;
+    }
+
+    .screenshot-label {
+      color: #666;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    /* iPhone frame - scaled for preview (x2 = ~45% of original) */
+    .iphone-frame {
+      width: 560px;
+      height: 1210px;
+      border-radius: 60px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    /* iPad frame - scaled for preview (+50% = ~30% of original) */
+    .ipad-frame {
+      width: 600px;
+      height: 800px;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    /* ====== SCREEN STYLES ====== */
+
+    /* Screen 1: Hero */
+    .screen-hero {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #064e3b 0%, #0f172a 50%, #134e4a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+    }
+
+    .screen-hero .app-icon {
+      width: 160px;
+      height: 160px;
+      border-radius: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 30px 80px rgba(16, 185, 129, 0.4);
+      overflow: hidden;
+      border: 6px solid rgba(255,255,255,0.3);
+    }
+
+    .screen-hero .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .screen-hero .badge {
+      font-size: 20px;
+      color: #10b981;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+    }
+
+    .screen-hero .title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .screen-hero .highlight {
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .screen-hero .subtitle {
+      font-size: 26px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 0;
+      max-width: 480px;
+    }
+
+    .screen-hero .rating {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.1);
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-size: 24px;
+    }
+
+    .screen-hero .stars { color: #fbbf24; }
+
+    .screen-hero .flags {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 56px;
+    }
+
+    /* Screen 2: Names */
+    .screen-names {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0f172a 0%, #064e3b 100%);
+      padding: 50px 40px;
+    }
+
+    .screen-names .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .screen-names .label {
+      font-size: 18px;
+      color: #10b981;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .screen-names h2 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .screen-names .formula {
+      color: #94a3b8;
+      font-size: 22px;
+    }
+
+    .name-card {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 32px;
+      padding: 30px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .name-card .arabic {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .name-card .trans {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .name-card .meaning {
+      font-size: 22px;
+      color: #94a3b8;
+    }
+
+    .name-card .play-btn {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #10b981, #14b8a6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      padding-left: 4px;
+    }
+
+    .progress-bar {
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 24px 30px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .progress-bar .bar {
+      flex: 1;
+      height: 12px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar .bar-fill {
+      height: 100%;
+      width: 34%;
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+      border-radius: 6px;
+    }
+
+    .progress-bar .text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #10b981;
+    }
+
+    /* Screen 3: Quiz */
+    .screen-quiz {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #134e4a 0%, #0f172a 100%);
+      padding: 50px 40px;
+    }
+
+    .screen-quiz .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .screen-quiz .label {
+      font-size: 18px;
+      color: #14b8a6;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .screen-quiz h2 {
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .question-box {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .question-box .number {
+      font-size: 18px;
+      color: #14b8a6;
+      margin-bottom: 20px;
+    }
+
+    .question-box .arabic-name {
+      font-size: 72px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .question-box .prompt {
+      font-size: 24px;
+      color: #94a3b8;
+    }
+
+    .quiz-option {
+      background: rgba(255,255,255,0.05);
+      border: 3px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .quiz-option.correct {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #10b981;
+    }
+
+    .quiz-option .letter {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .quiz-option.correct .letter {
+      background: #10b981;
+    }
+
+    .quiz-option .text {
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .quiz-option .check {
+      margin-left: auto;
+      font-size: 28px;
+      color: #10b981;
+    }
+
+    /* Screen 4: Gamification */
+    .screen-gamification {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+      padding: 40px 30px;
+    }
+
+    .screen-gamification .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .screen-gamification .label {
+      font-size: 18px;
+      color: #a78bfa;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .screen-gamification h2 {
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      flex: 1;
+      border-radius: 32px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .stat-card.xp {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(20, 184, 166, 0.1));
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .stat-card.streak {
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(239, 68, 68, 0.1));
+      border: 2px solid rgba(251, 146, 60, 0.3);
+    }
+
+    .stat-card .icon { font-size: 48px; margin-bottom: 10px; }
+    .stat-card .value { font-size: 44px; font-weight: 800; margin-bottom: 4px; }
+    .stat-card .stat-label { font-size: 20px; color: #94a3b8; }
+
+    .achievements-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .achievement {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 20px 10px;
+      text-align: center;
+    }
+
+    .achievement.unlocked {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.1));
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+
+    .achievement .ach-icon { font-size: 40px; margin-bottom: 8px; }
+    .achievement .name { font-size: 16px; color: #94a3b8; }
+    .achievement.unlocked .name { color: #fbbf24; }
+
+    .level-section {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 32px;
+      padding: 30px;
+    }
+
+    .level-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .level-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .level-xp {
+      color: #10b981;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .level-bar {
+      height: 16px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .level-bar-fill {
+      height: 100%;
+      width: 65%;
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+      border-radius: 8px;
+    }
+
+    /* Screen 5: Themes */
+    .screen-themes {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+      padding: 50px 40px;
+    }
+
+    .screen-themes .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .screen-themes .label {
+      font-size: 18px;
+      color: #60a5fa;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .screen-themes h2 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .screen-themes .sub {
+      color: #94a3b8;
+      font-size: 22px;
+    }
+
+    .themes-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .theme-card {
+      flex: 1;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 4px solid transparent;
+    }
+
+    .theme-card.active { border-color: #10b981; }
+    .theme-card.dark { background: #0f172a; }
+    .theme-card.light { background: #f8fafc; }
+
+    .mini-screen {
+      padding: 24px;
+      min-height: 300px;
+    }
+
+    .mini-header {
+      height: 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      width: 60%;
+    }
+
+    .dark .mini-header { background: rgba(255,255,255,0.1); }
+    .light .mini-header { background: rgba(0,0,0,0.1); }
+
+    .mini-card {
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .dark .mini-card { background: rgba(255,255,255,0.08); }
+    .light .mini-card { background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+    .mini-title {
+      height: 16px;
+      border-radius: 8px;
+      width: 70%;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+    }
+
+    .mini-text {
+      height: 12px;
+      border-radius: 6px;
+      width: 90%;
+    }
+
+    .dark .mini-text { background: rgba(255,255,255,0.2); }
+    .light .mini-text { background: rgba(0,0,0,0.15); }
+
+    .theme-label-box {
+      text-align: center;
+      padding: 20px;
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .dark .theme-label-box { background: rgba(255,255,255,0.05); color: white; }
+    .light .theme-label-box { background: #e2e8f0; color: #1e293b; }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 28px;
+      padding: 24px 30px;
+    }
+
+    .feature-item .feat-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #10b981, #14b8a6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .feature-item .feat-text {
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    /* Language content switching */
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>Rawdah App Store Screenshots</h1>
+  <p class="subtitle">Превью всех 5 экранов для iPhone и iPad</p>
+
+  <div class="lang-tabs">
+    <div class="lang-tab active" onclick="switchLang('ru')">Русский</div>
+    <div class="lang-tab" onclick="switchLang('en')">English</div>
+  </div>
+
+  <!-- RUSSIAN -->
+  <div id="lang-ru" class="lang-content active">
+    <h3 class="section-title">iPhone (1242 × 2688px)</h3>
+    <div class="screenshots-row">
+      <!-- Screen 1: Hero -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-hero">
+            <div class="app-icon"><img src="../public/logo.png" alt="Rawdah"></div>
+            <div class="badge">БЕСПЛАТНО</div>
+            <h1 class="title">Изучайте <span class="highlight">99 имён</span> Аллаха</h1>
+            <p class="subtitle">Красивое приложение с аудио произношением, тестами и геймификацией</p>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 в App Store</span>
+            </div>
+            <div class="flags">🇰🇿 🇷🇺 🇬🇧 🇹🇷</div>
+          </div>
+        </div>
+        <p class="screenshot-label">1. Главный экран</p>
+      </div>
+
+      <!-- Screen 2: Names -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-names">
+            <div class="header">
+              <div class="label">ИЗУЧЕНИЕ</div>
+              <h2>99 имён по темам</h2>
+              <p class="formula">11 тем × 9 имён = 99 имён</p>
+            </div>
+            <div class="name-card">
+              <div class="arabic">الرَّحْمَنُ</div>
+              <div class="trans">Ар-Рахман</div>
+              <div class="meaning">Милостивый</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="name-card">
+              <div class="arabic">الرَّحِيمُ</div>
+              <div class="trans">Ар-Рахим</div>
+              <div class="meaning">Милосердный</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="name-card">
+              <div class="arabic">المَلِكُ</div>
+              <div class="trans">Аль-Малик</div>
+              <div class="meaning">Царь</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="progress-bar">
+              <div class="bar"><div class="bar-fill"></div></div>
+              <div class="text">34/99</div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">2. Список имён</p>
+      </div>
+
+      <!-- Screen 3: Quiz -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-quiz">
+            <div class="header">
+              <div class="label">ТЕСТЫ</div>
+              <h2>Проверьте знания</h2>
+            </div>
+            <div class="question-box">
+              <div class="number">Вопрос 5 из 10</div>
+              <div class="arabic-name">الرَّحْمَنُ</div>
+              <div class="prompt">Что означает это имя?</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">A</div>
+              <div class="text">Всемогущий</div>
+            </div>
+            <div class="quiz-option correct">
+              <div class="letter">B</div>
+              <div class="text">Милостивый</div>
+              <div class="check">✓</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">C</div>
+              <div class="text">Всеведущий</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">D</div>
+              <div class="text">Царь</div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">3. Тесты</p>
+      </div>
+
+      <!-- Screen 4: Gamification -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-gamification">
+            <div class="header">
+              <div class="label">ГЕЙМИФИКАЦИЯ</div>
+              <h2>Мотивация</h2>
+            </div>
+            <div class="stats-row">
+              <div class="stat-card xp">
+                <div class="icon">⚡</div>
+                <div class="value">1,250</div>
+                <div class="stat-label">Очки XP</div>
+              </div>
+              <div class="stat-card streak">
+                <div class="icon">🔥</div>
+                <div class="value">7</div>
+                <div class="stat-label">Дней подряд</div>
+              </div>
+            </div>
+            <div class="achievements-title">🏆 Достижения</div>
+            <div class="achievements-grid">
+              <div class="achievement unlocked"><div class="ach-icon">🎯</div><div class="name">Первые шаги</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">📚</div><div class="name">Ученик</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">⭐</div><div class="name">Отличник</div></div>
+              <div class="achievement"><div class="ach-icon">🏆</div><div class="name">Чемпион</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">💪</div><div class="name">Усердный</div></div>
+              <div class="achievement"><div class="ach-icon">🔥</div><div class="name">В огне</div></div>
+              <div class="achievement"><div class="ach-icon">👑</div><div class="name">Мастер</div></div>
+              <div class="achievement"><div class="ach-icon">💎</div><div class="name">Легенда</div></div>
+            </div>
+            <div class="level-section">
+              <div class="level-header">
+                <div class="level-badge">⭐ Уровень 5</div>
+                <div class="level-xp">650 / 1000 XP</div>
+              </div>
+              <div class="level-bar"><div class="level-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">4. Геймификация</p>
+      </div>
+
+      <!-- Screen 5: Themes -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-themes">
+            <div class="header">
+              <div class="label">УДОБСТВО</div>
+              <h2>Тёмная и светлая темы</h2>
+              <p class="sub">Выберите комфортный режим</p>
+            </div>
+            <div class="themes-row">
+              <div class="theme-card dark active">
+                <div class="mini-screen">
+                  <div class="mini-header"></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                </div>
+                <div class="theme-label-box">Тёмная ✓</div>
+              </div>
+              <div class="theme-card light">
+                <div class="mini-screen">
+                  <div class="mini-header"></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                </div>
+                <div class="theme-label-box">Светлая</div>
+              </div>
+            </div>
+            <div class="features-list">
+              <div class="feature-item"><div class="feat-icon">🌐</div><div class="feat-text">4 языка: 🇰🇿 🇷🇺 🇬🇧 🇹🇷</div></div>
+              <div class="feature-item"><div class="feat-icon">📴</div><div class="feat-text">Работает офлайн</div></div>
+              <div class="feature-item"><div class="feat-icon">🔊</div><div class="feat-text">Аудио произношение</div></div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">5. Темы и функции</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div id="lang-en" class="lang-content">
+    <h3 class="section-title">iPhone (1242 × 2688px)</h3>
+    <div class="screenshots-row">
+      <!-- Screen 1: Hero -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-hero">
+            <div class="app-icon"><img src="../public/logo.png" alt="Rawdah"></div>
+            <div class="badge">FREE</div>
+            <h1 class="title">Learn the <span class="highlight">99 Names</span> of Allah</h1>
+            <p class="subtitle">Beautiful app with audio pronunciation, quizzes, and gamification</p>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 on App Store</span>
+            </div>
+            <div class="flags">🇰🇿 🇷🇺 🇬🇧 🇹🇷</div>
+          </div>
+        </div>
+        <p class="screenshot-label">1. Hero Screen</p>
+      </div>
+
+      <!-- Screen 2: Names -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-names">
+            <div class="header">
+              <div class="label">LEARNING</div>
+              <h2>99 Names by Topics</h2>
+              <p class="formula">11 Topics × 9 Names = 99 Names</p>
+            </div>
+            <div class="name-card">
+              <div class="arabic">الرَّحْمَنُ</div>
+              <div class="trans">Ar-Rahman</div>
+              <div class="meaning">The Most Gracious</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="name-card">
+              <div class="arabic">الرَّحِيمُ</div>
+              <div class="trans">Ar-Raheem</div>
+              <div class="meaning">The Most Merciful</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="name-card">
+              <div class="arabic">المَلِكُ</div>
+              <div class="trans">Al-Malik</div>
+              <div class="meaning">The King</div>
+              <div class="play-btn">▶</div>
+            </div>
+            <div class="progress-bar">
+              <div class="bar"><div class="bar-fill"></div></div>
+              <div class="text">34/99</div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">2. Names List</p>
+      </div>
+
+      <!-- Screen 3: Quiz -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-quiz">
+            <div class="header">
+              <div class="label">QUIZZES</div>
+              <h2>Test Your Knowledge</h2>
+            </div>
+            <div class="question-box">
+              <div class="number">Question 5 of 10</div>
+              <div class="arabic-name">الرَّحْمَنُ</div>
+              <div class="prompt">What does this name mean?</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">A</div>
+              <div class="text">The Almighty</div>
+            </div>
+            <div class="quiz-option correct">
+              <div class="letter">B</div>
+              <div class="text">The Most Gracious</div>
+              <div class="check">✓</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">C</div>
+              <div class="text">The All-Knowing</div>
+            </div>
+            <div class="quiz-option">
+              <div class="letter">D</div>
+              <div class="text">The King</div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">3. Quizzes</p>
+      </div>
+
+      <!-- Screen 4: Gamification -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-gamification">
+            <div class="header">
+              <div class="label">GAMIFICATION</div>
+              <h2>Stay Motivated</h2>
+            </div>
+            <div class="stats-row">
+              <div class="stat-card xp">
+                <div class="icon">⚡</div>
+                <div class="value">1,250</div>
+                <div class="stat-label">XP Points</div>
+              </div>
+              <div class="stat-card streak">
+                <div class="icon">🔥</div>
+                <div class="value">7</div>
+                <div class="stat-label">Day Streak</div>
+              </div>
+            </div>
+            <div class="achievements-title">🏆 Achievements</div>
+            <div class="achievements-grid">
+              <div class="achievement unlocked"><div class="ach-icon">🎯</div><div class="name">First Steps</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">📚</div><div class="name">Scholar</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">⭐</div><div class="name">Perfect</div></div>
+              <div class="achievement"><div class="ach-icon">🏆</div><div class="name">Champion</div></div>
+              <div class="achievement unlocked"><div class="ach-icon">💪</div><div class="name">Dedicated</div></div>
+              <div class="achievement"><div class="ach-icon">🔥</div><div class="name">On Fire</div></div>
+              <div class="achievement"><div class="ach-icon">👑</div><div class="name">Master</div></div>
+              <div class="achievement"><div class="ach-icon">💎</div><div class="name">Legend</div></div>
+            </div>
+            <div class="level-section">
+              <div class="level-header">
+                <div class="level-badge">⭐ Level 5</div>
+                <div class="level-xp">650 / 1000 XP</div>
+              </div>
+              <div class="level-bar"><div class="level-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">4. Gamification</p>
+      </div>
+
+      <!-- Screen 5: Themes -->
+      <div class="screenshot-wrapper">
+        <div class="iphone-frame">
+          <div class="screen-themes">
+            <div class="header">
+              <div class="label">COMFORT</div>
+              <h2>Dark & Light Themes</h2>
+              <p class="sub">Choose your comfortable mode</p>
+            </div>
+            <div class="themes-row">
+              <div class="theme-card dark active">
+                <div class="mini-screen">
+                  <div class="mini-header"></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                </div>
+                <div class="theme-label-box">Dark ✓</div>
+              </div>
+              <div class="theme-card light">
+                <div class="mini-screen">
+                  <div class="mini-header"></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                  <div class="mini-card"><div class="mini-title"></div><div class="mini-text"></div></div>
+                </div>
+                <div class="theme-label-box">Light</div>
+              </div>
+            </div>
+            <div class="features-list">
+              <div class="feature-item"><div class="feat-icon">🌐</div><div class="feat-text">4 Languages: 🇰🇿 🇷🇺 🇬🇧 🇹🇷</div></div>
+              <div class="feature-item"><div class="feat-icon">📴</div><div class="feat-text">Works Offline</div></div>
+              <div class="feature-item"><div class="feat-icon">🔊</div><div class="feat-text">Audio Pronunciation</div></div>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">5. Themes & Features</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById('lang-' + lang).classList.add('active');
+    }
+  </script>
+</body>
+</html>
