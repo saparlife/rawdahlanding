@@ -6,7 +6,8 @@
   "nav": {
     "features": "Features",
     "about": "About",
-    "openApp": "Open App"
+    "openApp": "Open App",
+    "webApp": "Web version"
   },
   "hero": {
     "badge": "Free",
